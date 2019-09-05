@@ -21,11 +21,11 @@ import java.util.logging.Logger;
  *
  * @author telecentro
  */
-public class LeituraRetornoBradesco implements LeituraRetorno{
+public class LeituraRetornoBancoBrasil implements LeituraRetorno{
 
     @Override
     public List<Boleto> lerArquivo(String nomeArquivo) {
-        try {
+       try {
             BufferedReader reader = Files.newBufferedReader(Paths.get(nomeArquivo));
             
             String ln;
@@ -37,7 +37,6 @@ public class LeituraRetornoBradesco implements LeituraRetorno{
                 Boleto boleto = new Boleto();
                 boleto.setId(Integer.valueOf(vetor[0]));
                 boleto.setCodBanco(vetor[1]);
-                boleto.setAgencia(ln);
                 boleto.setDataVencimento(LocalDate.parse(vetor[2]));
                 boleto.setDataPagamento(LocalDateTime.parse(vetor[3]));
                 boleto.setCpfCliente(vetor[4]);
@@ -60,4 +59,3 @@ public class LeituraRetornoBradesco implements LeituraRetorno{
     }
     
 }
-
